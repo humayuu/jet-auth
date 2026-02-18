@@ -68,7 +68,7 @@
                         <div class="dropdown-menu dropdown-menu-end">
                             <a href="{{ route('admin.profile') }}" class="dropdown-item" href="javascript:;"><i
                                     class="bx bx-user"></i><span>Profile</span></a>
-                            <a class="dropdown-item" href="javascript:;"><i
+                            <a class="dropdown-item" href="{{ route('change.password') }}"><i
                                     class="bx bx-cloud-download"></i><span>Change Password</span></a>
                             <form method="POST" action="{{ route('admin.logout') }}">
                                 @csrf

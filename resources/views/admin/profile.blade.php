@@ -15,8 +15,16 @@
         <div class="card shadow-lg p-4" style="width: 100%; max-width: 500px;">
 
             <h3 class="text-center mb-4">Profile Info</h3>
+            @if (session()->has('error') || session()->has('success'))
+                <div class="alert alert-{{ session()->get('error') ? 'danger' : 'success' }} alert-dismissible fade show"
+                    role="alert">
+                    {{ session()->get('error') ? session()->get('error') : session()->get('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
 
-            <form method="POST" action="{{ route('admin.profile.update') }}">
+            <form method="POST" action="{{ route('admin.profile.update') }}" enctype="multipart/form-data">
+                @csrf
                 <div class="mb-3">
                     <label for="fullName" class="form-label">Full Name</label>
                     <input type="text" class="form-control" id="fullName" name="name"
@@ -32,7 +40,8 @@
                 <div class="mb-4">
                     <label for="" class="form-label">User Image</label>
                     <input type="file" class="form-control" name="image">
-                    <img src="{{ asset('images/' . $admin->profile_photo_path) }}" alt="">
+                    <img src="{{ asset('images/' . $admin->profile_photo_path) }}" class="img-thumbnail mt-2"
+                        width="200" alt="">
                 </div>
 
                 <div class="d-flex justify-content-between">

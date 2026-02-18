@@ -26,10 +26,11 @@ Route::prefix('admin')->group(function () {
         Route::middleware(isAdminMiddleware::class)->group(function () {
             Route::get('/dashboard', 'AdminDashboard')->name('admin.dashboard');
             Route::get('/profile', 'AdminProfile')->name('admin.profile');
+            Route::get('change/password', 'ChangePassword')->name('change.password');
         });
-
         Route::post('/login', 'AdminLogin')->name('admin.login');
         Route::post('/logout', 'AdminLogout')->name('admin.logout');
         Route::post('/profile/update', 'ProfileUpdate')->name('admin.profile.update');
+        Route::post('/password/update', 'PasswordUpdate')->name('admin.password.update');
     });
 });
