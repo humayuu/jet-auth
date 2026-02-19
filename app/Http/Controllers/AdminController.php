@@ -105,7 +105,7 @@ class AdminController extends Controller
      */
     public function ChangePassword()
     {
-        return view('change_password');
+        return view('admin.change_password');
     }
 
     /**
